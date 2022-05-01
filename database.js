@@ -1,23 +1,9 @@
-/*module.exports = {
-    dialect: 'mysql',
-    host: '10.129.76.12',
-    username: 'dargos1',
-    password: 'BunnyHeist0+',
-    database: 'bunnyheist_test',
-    define: {
-        timestamps: true,
-        underscored: true
-    }
-};*/
+const Sequelize = require('sequelize');
+const dbParameters = require('./database_parameters');
 
-module.exports = {
-    dialect: 'mysql',
-    host: 'localhost',
-    username: 'root',
-    password: 'bunnyheist',
-    database: 'teste',
-    define: {
-        timestamps: true,
-        underscored: true
-    }
-};
+const db = new Sequelize(dbParameters.database, dbParameters.username, dbParameters.password, {
+    host: dbParameters.host,
+    dialect: dbParameters.dialect
+});
+
+module.exports = db;
