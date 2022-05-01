@@ -1,6 +1,7 @@
 (async () => {
     const db = require('./database');
     const dbUser = require('./database_user');
+    const dbWallet = require('./database_wallet');
     await db.sync();
     
     /*

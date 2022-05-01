@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('./database');
 
-const User = db.define('user', {
+const Wallet = db.define('wallet', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -9,21 +9,19 @@ const User = db.define('user', {
         allowNull: false,
         unique: true
     },
-    username: {
+    user_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    wallet: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
     },
-    email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
-        isEmail: true
-    },
-    password: {
+    wallet_password: {
         type: Sequelize.STRING,
         allowNull: false
     }
 })
 
-module.exports = User;
+module.exports = Wallet;

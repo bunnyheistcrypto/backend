@@ -44,4 +44,23 @@ routes.post('/signup', (req, res) => {
     })
 })
 
+routes.post('/login', (req, res) => {
+    const usernameExists = dbUser.findOne({ where: { username: req.body.username } });
+    usernameExists.then(result => {
+        if (!result) {
+            res.status(409).json({ error: 'This username does not exist' });
+        }
+        else {
+            bcrypt.compare(req.body.password, result.password, (error, result) => {
+                if (result) {
+                    res.status(200).json({ message: 'Login completed' });
+                }
+                else {
+                    res.status(201).json({ error: 'Incorrect password' });
+                }
+            })
+        }
+    })
+})
+
 module.exports = routes;
