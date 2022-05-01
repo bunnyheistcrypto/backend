@@ -3,11 +3,7 @@
     host: '10.129.76.12',
     username: 'dargos1',
     password: 'BunnyHeist0+',
-    database: 'bunnyheist_test',
-    define: {
-        timestamps: true,
-        underscored: true
-    }
+    database: 'bunnyheist_test'
 }*/
 
 module.exports = {
