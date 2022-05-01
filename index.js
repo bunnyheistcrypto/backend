@@ -1,22 +1,14 @@
 (async () => {
     const db = require('./database');
-    const dbEstructures = require('./database_estructures');
+    const dbUser = require('./database_user');
     await db.sync();
+
+    await dbUser.create({
+        username: 'vinitbasilio',
+        email: 'vinitbasilio@hotmail.com',
+        password: '123'
+    })
+
+    const result = await dbUser.findAll();
+    console.log(result);
 })();
-
-/*
-db.authenticate().then(() => {
-    console.log('Sucesso na conexão com o DB');
-}).catch((error) => {
-    console.error('Falha na conexão:', error);
-});
-
-const result = User.findAll();
-console.log(JSON.stringify(result, null, 2));
-
-try {
-    const vini = User.create({ id:2, username:'vinietbasilio' });
-} catch(error) {
-    console.log(error);
-}
-*/
