@@ -11,9 +11,9 @@
 }*/
 
 module.exports = {
-    dialect: 'mysql',
+    dialect: 'mariadb',
     host: 'localhost',
     username: 'root',
-    password: 'bunnyheist',
-    database: 'teste'
+    password: '',
+    database: 'bunnyheist'
 }
