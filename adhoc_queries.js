@@ -16,6 +16,6 @@
     console.log(result);
     
     //Delete
-    await dbUser.destroy({ where: { id: 4 } });
+    await dbUser.destroy({ where: { id: 11 } });
     */
 })();

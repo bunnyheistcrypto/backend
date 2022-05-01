@@ -11,13 +11,13 @@ routes.post('/signup', (req, res) => {
     const usernameExists = dbUser.findOne({ where: { username: req.body.username } });
     usernameExists.then(result => {
         if (result) {
-            res.status(409).json({ message: 'Username already exists' });
+            res.status(409).json({ error: 'Username already exists' });
         }
         else {
             const emailExists = dbUser.findOne({ where: { email: req.body.email } });
             emailExists.then(result => {
                 if (result) {
-                    res.status(409).json({ message: 'Email already exists' });
+                    res.status(409).json({ error: 'Email already exists' });
                 }
                 else {
                     bcrypt.hash(req.body.password, 10, (error, hash) => {
@@ -31,11 +31,9 @@ routes.post('/signup', (req, res) => {
                                 password: hash
                             });
                             novoUsuario.then(result => {
-                                console.log(result);
-                                res.status(201).json({ message: 'The new account has been created' });
+                                res.status(200).send(result);
                             })
                             novoUsuario.catch(error => {
-                                console.log(error);
                                 res.status(201).json({ error: 'Signup failed, try again' });
                             })
                         }
