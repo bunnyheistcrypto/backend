@@ -1,8 +1,8 @@
 (async () => {
-    const db = require('./database');
-    const dbUser = require('./database_user');
-    const dbWallet = require('./database_wallet');
-    await db.sync();
+    const db = require('./database')
+    const dbUser = require('./database_user')
+    const dbWallet = require('./database_wallet')
+    await db.sync()
     
     /*
     //Escrita
@@ -13,10 +13,10 @@
     })
     
     //Leitura
-    const result = await dbUser.findAll();
-    console.log(result);
+    const result = await dbUser.findAll()
+    console.log(result)
     
     //Delete
-    await dbUser.destroy({ where: { id: 11 } });
+    await dbUser.destroy({ where: { id: 11 } })
     */
-})();
+})()

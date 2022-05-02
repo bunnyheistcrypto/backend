@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const db = require('./database');
+const Sequelize = require('sequelize')
+const db = require('./database')
 
 const Wallet = db.define('wallet', {
     id: {
@@ -24,4 +24,4 @@ const Wallet = db.define('wallet', {
     }
 })
 
-module.exports = Wallet;
+module.exports = Wallet
