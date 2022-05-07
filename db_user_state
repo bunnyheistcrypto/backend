@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
-const db = require('./database')
+const db = require('./db')
 
-const Session = db.define('session', {
+const User_State = db.define('user_state', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -9,15 +9,15 @@ const Session = db.define('session', {
         allowNull: false,
         unique: true
     },
-    session_id: {
+    user_id: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
     },
-    user_id: {
+    health: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: false
     }
 })
 
-module.exports = Session
+module.exports = User_State

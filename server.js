@@ -1,8 +1,16 @@
 const express = require('express')
 const session = require('express-session')
-const dbSession = require('./database_session')
-const db = require('./database')
-const dbUser = require('./database_user')
+
+const dbSession = require('./db_session')
+const db = require('./db')
+const dbUser = require('./db_user')
+const dbTransaction = require('./db_transaction')
+const dbWallet = require('./db_wallet')
+const dbUserItem = require('./db_user_item')
+const dbUserState = require('./db_user_state')
+const dbMap = require('./db_map')
+const dbMapPrerequisite = require('./db_map_prerequisite')
+const dbItem = require('./db_item')
 
 const routes = express.Router()
 const app = express()
@@ -15,7 +23,7 @@ app.use(session({
     secret: 'login secret',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 600000 }
+    cookie: { maxAge: 24*60*60*1000 }
 }))
 
 app.use(routes)
