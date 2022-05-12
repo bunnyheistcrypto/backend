@@ -17,6 +17,10 @@ const Session = db.define('session', {
     user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+    },
+    session_expires_at: {
+        type: Sequelize.DATE,
+        allowNull: false
     }
 })
 

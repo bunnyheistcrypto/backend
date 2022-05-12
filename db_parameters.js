@@ -1,15 +1,7 @@
-/*module.exports = {
-    dialect: 'mysql',
-    host: '10.129.76.12',
-    username: 'dargos1',
-    password: 'BunnyHeist0+',
-    database: 'bunnyheist_test'
-}*/
-
 module.exports = {
-    dialect: 'mariadb',
-    host: 'localhost',
-    username: 'root',
-    password: '',
+    dialect: 'mysql',
+    host: 'bunnyheist.cle0fjte295b.sa-east-1.rds.amazonaws.com',
+    username: 'admin',
+    password: '1597534862Ve',
     database: 'bunnyheist'
 }

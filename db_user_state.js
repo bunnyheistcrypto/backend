@@ -17,6 +17,10 @@ const User_State = db.define('user_state', {
     health: {
         type: Sequelize.INTEGER,
         allowNull: false
+    },
+    coin: {
+        type: Sequelize.DOUBLE,
+        allowNull: false
     }
 })
 

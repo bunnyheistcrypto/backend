@@ -1,11 +1,11 @@
 const express = require('express')
 const session = require('express-session')
 
+const { Op } = require("sequelize")
 const dbSession = require('./db_session')
 const db = require('./db')
 const dbUser = require('./db_user')
 const dbTransaction = require('./db_transaction')
-const dbWallet = require('./db_wallet')
 const dbUserItem = require('./db_user_item')
 const dbUserState = require('./db_user_state')
 const dbMap = require('./db_map')
@@ -15,7 +15,11 @@ const dbItem = require('./db_item')
 const routes = express.Router()
 const app = express()
 
+const maxSessionAge = 24*60*60*1000
+
 db.sync()
+
+//dbSession.destroy({ where: { [Op.lte]: [{ session_expires_at: Date.now() }] } })
 
 app.use(express.json())
 
@@ -23,7 +27,7 @@ app.use(session({
     secret: 'login secret',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 24*60*60*1000 }
+    cookie: { maxAge: maxSessionAge }
 }))
 
 app.use(routes)
@@ -51,7 +55,8 @@ routes.post('/signup', (req, res) => {
                             const novoUsuario = dbUser.create({
                                 username: req.body.username,
                                 email: req.body.email,
-                                password: hash
+                                password: hash,
+                                wallet: req.body.wallet
                             });
                             novoUsuario.then(output => {
                                 res.status(200).send(output)
@@ -78,7 +83,8 @@ routes.post('/login', (req, res) => {
                 if (response) {
                     const novaSessao = dbSession.create({
                         user_id: result.id,
-                        session_id: req.sessionID
+                        session_id: req.sessionID,
+                        session_expires_at: Date.now() + maxSessionAge
                     })
                     novaSessao.then(output => {
                         res.status(200).send(output)
