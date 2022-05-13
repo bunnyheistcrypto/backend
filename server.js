@@ -94,7 +94,7 @@ routes.post('/login', (req, res) => {
                     })
                 }
                 else {
-                    res.status(201).json({ error: 'Incorrect passworddddddd' })
+                    res.status(201).json({ error: 'Incorrect password' })
                 }
             })
         }
